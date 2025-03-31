@@ -1,4 +1,4 @@
-import { drizzle } from "drizzle-orm/neon-web";
+import { drizzle } from "drizzle-orm/neon-http";
 
 import { neon, neonConfig } from '@neondatabase/serverless';
 import { config } from "dotenv";

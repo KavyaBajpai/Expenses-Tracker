@@ -1,6 +1,8 @@
+
 import { Geist, Geist_Mono, Outfit } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
+import { Toaster } from "@/components/ui/sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,6 +25,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${outfit.variable} ${geistSans.variable}`}>
         {children}
+        <Toaster/>
       </body>
     </html>
     </ClerkProvider>
