@@ -20,7 +20,7 @@ import { Budgets } from '@/utils/schema'
 import { Toaster } from '@/components/ui/sonner'
 import { toast } from 'sonner'
 
-function CreateBudget() {
+function CreateBudget({refreshData}) {
     const [openEmojiPicker, setOpenEmojiPicker] = useState(false)
     const [emojiIcon, setEmojiIcon] = useState('😀')
     const [budgetName, setBudgetName] = useState('')
@@ -38,6 +38,7 @@ function CreateBudget() {
             }).returning({ insertedId: Budgets.id })
 
         if (result) {
+            refreshData()
             toast('New Budget Created Successfully!')
             setBudgetName('')
             setBudgetAmount('')
@@ -55,7 +56,7 @@ function CreateBudget() {
                     <DialogHeader>
                         <DialogTitle>Fill in the details</DialogTitle>
                         <DialogDescription>
-                            <div className='mt-5 '>
+                            <div className='mt-5 z-20'>
                                 <Button variant="outline" size="lg" onClick={() => (setOpenEmojiPicker(!openEmojiPicker))}>{emojiIcon}</Button>
                                 <div className='absolute'>
                                     <EmojiPicker open={openEmojiPicker} onEmojiClick={(e) => { setEmojiIcon(e.emoji); setOpenEmojiPicker(!openEmojiPicker) }} />
