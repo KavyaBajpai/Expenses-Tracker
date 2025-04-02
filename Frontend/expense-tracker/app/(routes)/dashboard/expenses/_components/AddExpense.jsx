@@ -15,7 +15,8 @@ function AddExpense({budgetId, user, refreshData}) {
             name: expenseName,
             amount: expenseAmount,
             budgetId: budgetId,
-            createdAt: user?.primaryEmailAddress?.emailAddress
+            createdAt: new Date().toLocaleDateString()
+
         }).returning({insertedId: Budgets.id})
 
         console.log(result)

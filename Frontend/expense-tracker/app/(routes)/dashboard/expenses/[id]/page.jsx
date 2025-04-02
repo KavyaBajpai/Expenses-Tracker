@@ -1,18 +1,21 @@
 "use client"
 import { useUser } from '@clerk/nextjs'
-import { eq, getTableColumns, sql } from 'drizzle-orm';
+import { eq, getTableColumns, sql, desc } from 'drizzle-orm';
 import React, { useEffect, useState } from 'react'
 import { Expenses, Budgets } from '@/utils/schema';
 import { db } from '@/utils/dbConfig'
 import BudgetItem from '../../budgets/_components/BudgetItem';
 import AddExpense from '../_components/AddExpense';
+import ExpenseListTable from '../_components/ExpenseListTable';
 function ExpensesScreen({params}) {
   
   useEffect(()=>{
-    getBudgetInfo()
+    getBudgetInfo();
+    getExpensesList();
   },[params])
   const {user} = useUser();
   const [budgetInfo, setBudgetInfo] = useState([])
+  const [expensesList, setExpensesList] = useState([])
   const getBudgetInfo = async () => {
     const result = await db.select({
           ...getTableColumns(Budgets),
@@ -28,6 +31,15 @@ function ExpensesScreen({params}) {
         console.log(result)
         console.log(user)
         setBudgetInfo(result[0])
+        getExpensesList()
+  }
+
+  const getExpensesList = async () => {
+    const result = await db.select().from(Expenses)
+    .where(eq(Expenses.budgetId, params.id))
+    .orderBy(desc(Expenses.id))
+    setExpensesList(result)
+    console.log(result)
   }
   return (
     <div className='p-10'>
@@ -42,6 +54,11 @@ function ExpensesScreen({params}) {
         <AddExpense budgetId={params.id} user={user} refreshData={()=>{getBudgetInfo()}}/>
       </div>
       </div>
+      <div className='mt-5'>
+      <h2 className='text-2xl font-bold'>Latest Expenses</h2>
+      <ExpenseListTable expensesList={expensesList} refreshData={()=>{getBudgetInfo()}} />
+      </div>
+      
       
     </div>
   )
