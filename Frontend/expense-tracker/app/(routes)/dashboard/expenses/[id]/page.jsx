@@ -117,7 +117,7 @@ function ExpensesScreen({ params }) {
         </div>
       </div>
       <div className='mt-5'>
-        <h2 className='text-2xl font-bold'>Latest Expenses</h2>
+        
         <ExpenseListTable expensesList={expensesList} refreshData={() => { getBudgetInfo() }} />
       </div>
 

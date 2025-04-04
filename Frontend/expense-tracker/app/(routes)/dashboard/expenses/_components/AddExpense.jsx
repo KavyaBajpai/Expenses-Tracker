@@ -18,6 +18,8 @@ function AddExpense({budgetId, user, refreshData}) {
             createdAt: new Date().toLocaleDateString()
 
         }).returning({insertedId: Budgets.id})
+        setExpenseName('')
+        setExpenseAmount('')
 
         console.log(result)
         if(result)
