@@ -37,10 +37,10 @@ function SideNav() {
     ]
     return (
         <>
-            <div className='flex flex-col gap-3 h-screen border shadow-sm p-1'>
-                <div className=''>
+            <div className='flex flex-col gap-3 h-screen  shadow-md p-2 bg-white mt-2'>
+                {/* <div className=''>
                     <Image src={'/logoipsum-243.svg'} alt="logo" width={160} height={100} className='p-5 ' />
-                </div>
+                </div> */}
                 <div className='mt-2 h-fit'>
                    
                     {
@@ -56,10 +56,10 @@ function SideNav() {
 })
                     }
                 </div>
-                <div className='fixed bottom-10 p-5 cursor-pointer gap-2 flex items-center'>
+                {/* <div className='fixed bottom-10 p-5 cursor-pointer gap-2 flex items-center'>
                     <UserButton/>
                     Profile
-                </div>
+                </div> */}
             </div>
 
         </>
