@@ -32,7 +32,7 @@ function AddExpense({budgetId, user, refreshData}) {
     return (
         <div>
             <div className='border hover:shadow-md rounded-lg p-4'>
-            <h2 className='content-center font-bold text-lg text-indigo-500'>Add Expense</h2>
+            <h2 className='content-center font-bold text-lg text-indigo-900'>Add Expense</h2>
             <div className='mt-1'>
                 <h2 className='text-lg font-semi-bold mb-1'>Expense Name</h2>
                 <Input placeholder="e.g. Stationery" onChange={(e) => setExpenseName(e.target.value)} />
@@ -41,7 +41,7 @@ function AddExpense({budgetId, user, refreshData}) {
                 <h2 className='text-lg font-semi-bold mb-1'>Expense Amount</h2>
                 <Input placeholder="e.g $5000" onChange={(e) => setExpenseAmount(e.target.value)} />
             </div>
-            <Button disabled={!(expenseName && expenseAmount)} onClick={()=>{ addNewExpense()}} className="mt-3 w-full bg-indigo-600">Add</Button>
+            <Button disabled={!(expenseName && expenseAmount)} onClick={()=>{ addNewExpense()}} className="mt-3 w-full bg-indigo-800">Add</Button>
             </div>
             
 

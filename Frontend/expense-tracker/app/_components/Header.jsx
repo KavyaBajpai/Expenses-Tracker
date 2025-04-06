@@ -11,14 +11,18 @@ function Header() {
   const router = useRouter();
   return (
     <div className='flex justify-between items-center p-4 bg-gray-100 shadow-md'>
+      <div className='flex items-center gap-3 justify-between cursor-pointer hover:shadow-sm hover:bg-blue-100 rounded-lg px-5' onClick={() => router.replace("/")}>
       <Image
-        src="/logoipsum-243.svg"
+        src="/logo2.png"
         alt="logo"
-        width={160}
-        height={100}
+        width={50}
+        height={50}
         className="cursor-pointer"
-        onClick={() => router.replace("/")}
+        
       />
+      <h2 className='text-blue-900 font-bold text-xl'>eXpensifyX</h2>
+      </div>
+      
       
       {isSignedIn ? <UserButton /> : <Link href="/sign-in"><Button >Sign In</Button></Link>}
       

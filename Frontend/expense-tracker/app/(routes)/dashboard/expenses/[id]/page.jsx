@@ -87,7 +87,7 @@ function ExpensesScreen({ params }) {
 
           <AlertDialog>
             <AlertDialogTrigger asChild>
-              <Button className='flex gap-2' variant="destructive"><Trash /> Delete</Button>
+              <Button className='flex gap-2 bg-indigo-900' ><Trash /> Delete</Button>
             </AlertDialogTrigger>
             <AlertDialogContent>
               <AlertDialogHeader>

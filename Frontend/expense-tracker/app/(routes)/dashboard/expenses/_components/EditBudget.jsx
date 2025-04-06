@@ -58,7 +58,7 @@ function EditBudget({budgetInfo, refreshData}) {
       
       <Dialog>
                       <DialogTrigger asChild>
-                      <Button className='flex gap-2'><Edit />Edit</Button>
+                      <Button className='flex gap-2 bg-indigo-900'><Edit />Edit</Button>
                           </DialogTrigger>
                       <DialogContent>
                           <DialogHeader>

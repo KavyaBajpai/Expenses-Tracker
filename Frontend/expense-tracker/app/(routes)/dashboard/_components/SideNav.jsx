@@ -1,14 +1,17 @@
 "use client"
 import { UserButton } from '@clerk/nextjs'
-import { LayoutGrid, PiggyBank, ReceiptText, ShieldCheck } from 'lucide-react'
+import { LayoutGrid, PiggyBank, ReceiptText, ShieldCheck, X } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React from 'react'
 
-function SideNav() {
+function SideNav({ isOpen, setIsOpen }) {
     const path = usePathname()
-
+    console.log(isOpen)
+    const handleToggle = () => {
+        setIsOpen(!isOpen);
+     }
     const menuList = [
         {
             id: 1,
@@ -36,33 +39,23 @@ function SideNav() {
         }
     ]
     return (
-        <>
-            <div className='flex flex-col gap-3 h-screen  shadow-md p-2 bg-white mt-2'>
-                {/* <div className=''>
-                    <Image src={'/logoipsum-243.svg'} alt="logo" width={160} height={100} className='p-5 ' />
-                </div> */}
-                <div className='mt-2 h-fit'>
-                   
-                    {
-                        menuList.map((menu,index) => {
-                            return <Link key={index} href={menu.path}>
-                             <h2 key={menu.id} 
-                                    className={`flex gap-2 items-center text-gray-600 font-medium p-2 cursor-pointer rounded-md hover:text-primary hover:bg-blue-200
-                                                ${path==menu.path && 'text-primary bg-blue-200'} `}>
-                                <menu.icon />
-                                {menu.name}
-                            </h2>
-                            </Link>
-})
-                    }
-                </div>
-                {/* <div className='fixed bottom-10 p-5 cursor-pointer gap-2 flex items-center'>
-                    <UserButton/>
-                    Profile
-                </div> */}
-            </div>
 
-        </>
+        <div className={`fixed w-64 flex flex-col gap-3 h-screen shadow-md p-2 bg-white transition-all duration-500 transform ease-in-out ${isOpen ? "translate-x-0 opacity-100" : "-translate-x-full opacity-50"}`}>
+            {
+                isOpen && <div className='flex p-2 justify-end'>
+                    <X  onClick={()=> {handleToggle()}} className='text-gray-600 cursor-pointer hover:text-gray-950 ' />
+                </div>
+            }
+            {menuList.map((menu) => (
+                <Link key={menu.id} href={menu.path} className="no-underline">
+                    <h2 className={`flex gap-2 items-center text-gray-600 font-medium p-2 cursor-pointer rounded-md hover:text-primary hover:bg-blue-200
+                                    ${path === menu.path && 'text-primary bg-blue-200'}`}>
+                        <menu.icon />
+                        {menu.name}
+                    </h2>
+                </Link>
+            ))}
+        </div>
     )
 }
 

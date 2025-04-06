@@ -20,16 +20,16 @@ function BudgetItem({ budget }) {
                     </div>
                     </div>
                     <div>
-                        <h2 className='font-bold text-lg text-indigo-600'>${budget.amount}</h2>
+                        <h2 className='font-bold text-lg text-indigo-900'>${budget.amount}</h2>
                     </div>
                    </div>
                     <div className='mt-5 w-full flex flex-col items-center'>
                         <div className='w-[100%] flex items-center justify-between mb-3'>
                             <h2 className='text-xs text-slate-600'>${budget.totalSpend?budget.totalSpend:0} Spent</h2>
-                            <h2 className='text-xs text-indigo-600'>${budget.amount-budget.totalSpend} Remaining</h2>
+                            <h2 className='text-xs text-indigo-900'>${budget.amount-budget.totalSpend} Remaining</h2>
                         </div>
                         <div className='w-full bg-slate-300 h-2 rounded-full'>
-                           <div className=' bg-indigo-600 h-2 rounded-full' style={{width:`${calculateProgress()}%`}}>
+                           <div className=' bg-indigo-900 h-2 rounded-full' style={{width:`${calculateProgress()}%`}}>
 
                            </div>
                         </div>
