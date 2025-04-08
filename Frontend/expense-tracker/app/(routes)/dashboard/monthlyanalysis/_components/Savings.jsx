@@ -71,9 +71,9 @@ function Savings({ month}) {
   }, [month, user]);
 
   return (
-    <div className="bg-gray-200 rounded-lg p-5 border-2 flex flex-col gap-8 h-96">
-      <h2 className="font-bold text-xl mb-6">Savings</h2>
-      <div className='flex justify-center items-center '>
+    <div className="bg-gray-100 rounded-lg p-5 border flex flex-col gap-8">
+      <h2 className="font-bold text-xl mb-10">Savings</h2>
+      <div className='flex justify-center items-center h-80 mb-4'>
       <Carousel className="w-full max-w-xs bg-gray-900 ">
         <CarouselContent className=' bg-gray-900 text-gray-100 border-none '>
           {prev1Month > 0 && (

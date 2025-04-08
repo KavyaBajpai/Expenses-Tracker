@@ -4,12 +4,14 @@ import { useUser } from '@clerk/nextjs'
 import { useEffect, useState } from 'react'
 import { Budgets, Expenses } from '@/utils/schema'
 import React from 'react'
-import ExpenseListTable from '../expenses/_components/ExpenseListTable'
-import { eq } from 'drizzle-orm'
+
+import { eq, sql } from 'drizzle-orm'
+import ExpenseList from './_components/ExpensesList'
 
 function Page() {
     const [expensesList, setExpensesList] = useState([])
     const { user } = useUser()
+    const currentMonth = new Date().getMonth() + 1;
 
     useEffect(() => {
         if (user) {
@@ -24,7 +26,7 @@ function Page() {
                 .from(Expenses)
                 .innerJoin(Budgets, eq(Expenses.budgetId, Budgets.id))
                 .where(eq(Budgets.createdBy, user.id)) // Ensure user is defined
-
+                .where(sql`EXTRACT(MONTH FROM ${Budgets.createdAt})::integer = ${currentMonth}`)
             console.log("from current")
             console.log(result)
 
@@ -37,7 +39,7 @@ function Page() {
     return (
         <div className='p-10'>
             <h2 className='font-bold text-3xl mb-4'>All Expenses</h2>
-            <ExpenseListTable expensesList={expensesList} refreshData={getExpenses}/>
+            <ExpenseList expensesList={expensesList} refreshData={getExpenses}/>
         </div>
     )
 }

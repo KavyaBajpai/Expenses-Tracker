@@ -7,6 +7,7 @@ import { eq, getTableColumns, sql } from 'drizzle-orm'
 import { Budgets, Expenses } from '@/utils/schema'
 import BudgetItem from './BudgetItem'
 function BudgetList() {
+  const currentMonth = new Date().getMonth() + 1;
   const [budgetList, setBudgetList] = useState([])
   const {user} = useUser();
   useEffect(() => {
@@ -21,6 +22,7 @@ function BudgetList() {
     }).from(Budgets)
     .leftJoin(Expenses, eq(Budgets.id, Expenses.budgetId))
     .where(eq(Budgets.createdBy, user.id))
+    .where(sql`EXTRACT(MONTH FROM ${Budgets.createdAt})::integer = ${currentMonth}`)
     .groupBy(Budgets.id)
      setBudgetList(result);
      console.log("hi")

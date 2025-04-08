@@ -6,6 +6,7 @@ import { db } from '@/utils/dbConfig'
 function CardsInfo({budgetList}) {
   const [totalBudget, setTotalBudget] = useState(0)
   const [totalSpend, setTotalSpend] = useState(0)
+  const currentMonth = new Date().getMonth() + 1;
   console.log({budgetList})
   const calcCardInfo = () => {
       console.log("hello from cardsInfo.jsx")

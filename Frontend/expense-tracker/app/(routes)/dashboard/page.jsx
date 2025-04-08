@@ -17,7 +17,7 @@ function Dashboard() {
   const { user } = useUser();
   const [budgetList, setBudgetList] = useState([])
   const [expensesList, setExpensesList] = useState([])
-  
+  const currentMonth = new Date().getMonth() + 1;
 
   useEffect(() => {
     getBudgetList()
@@ -31,6 +31,7 @@ function Dashboard() {
     }).from(Budgets) 
       .leftJoin(Expenses, eq(Budgets.id, Expenses.budgetId))
       .where(eq(Budgets.createdBy, user.id))
+       .where(sql`EXTRACT(MONTH FROM ${Budgets.createdAt})::integer = ${currentMonth}`)
       .groupBy(Budgets.id)
       
     setBudgetList(result);
@@ -50,6 +51,7 @@ function Dashboard() {
     }).from(Budgets)
     .rightJoin(Expenses, eq(Budgets.id, Expenses.budgetId)) 
     .where(eq(Budgets.createdBy, user.id))
+     .where(sql`EXTRACT(MONTH FROM ${Budgets.createdAt})::integer = ${currentMonth}`)
     .orderBy(desc(Expenses.createdAt))
 
     setExpensesList(result);

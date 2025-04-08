@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 
 import Input from './_components/Input'
-import PieChartRender from './_components/PieChart'
+import PieChartRender from './_components/BudgetBreakdown'
 import Savings from './_components/Savings'
 
 function page() {
