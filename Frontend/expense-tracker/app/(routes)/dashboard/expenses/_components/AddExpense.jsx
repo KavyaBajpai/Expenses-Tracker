@@ -15,7 +15,7 @@ function AddExpense({budgetId, user, refreshData}) {
             name: expenseName,
             amount: expenseAmount,
             budgetId: budgetId,
-            createdAt: new Date().toLocaleDateString()
+            createdAt: new Date()
 
         }).returning({insertedId: Budgets.id})
         setExpenseName('')

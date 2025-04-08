@@ -13,6 +13,7 @@ function Page() {
 
     useEffect(() => {
         if (user) {
+            console.log("useeffect here")
             getExpenses();
         }
     }, [user])  // Depend on `user` to make sure it's available

@@ -28,7 +28,7 @@ function Dashboard() {
       ...getTableColumns(Budgets),
       totalSpend: sql`sum(${Expenses.amount}::integer)`.mapWith(Number),
       totalItem: sql`count(${Expenses.id})`.mapWith(Number)
-    }).from(Budgets)
+    }).from(Budgets) 
       .leftJoin(Expenses, eq(Budgets.id, Expenses.budgetId))
       .where(eq(Budgets.createdBy, user.id))
       .groupBy(Budgets.id)

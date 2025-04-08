@@ -6,6 +6,7 @@ import React from 'react'
 import { toast } from 'sonner'
 
 function ExpenseListTable({expensesList, refreshData}) {
+    console.log("from expenses list")
     console.log(expensesList)
     const deleteExpense = async (expense) => {
         const result = await db.delete(Expenses)
@@ -31,7 +32,7 @@ function ExpenseListTable({expensesList, refreshData}) {
             <div className='grid grid-cols-4 bg-slate-50 p-2 ' key={index}>
             <h2>{expenses.name}</h2>
             <h2>{expenses.amount}</h2>
-            <h2>{expenses.createdAt}</h2>
+            <h2>{new Date(expenses.createdAt).toLocaleDateString()}</h2>
             <h2>
                 <Trash className='text-red-600 cursor-pointer' onClick={()=>{deleteExpense(expenses)}}/>
             </h2>
