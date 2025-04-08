@@ -8,9 +8,9 @@ import Savings from './_components/Savings'
 function page() {
   const [month, setMonth] = useState()
   
-  useEffect(()=>{
-    console.log("month:", month)
-  },[month])
+  // useEffect(()=>{
+  //   console.log("month:", month)
+  // },[month])
   return (
     <div className='p-10'>
       <h2 className='text-3xl font-bold mb-6'>My Monthly Analysis</h2>
@@ -20,7 +20,7 @@ function page() {
           <PieChartRender month={month}/>
         </div>
         <div className='md:col-span-1'>
-          <Savings />
+          <Savings month={month}/>
         </div>
       </div>
     </div>
