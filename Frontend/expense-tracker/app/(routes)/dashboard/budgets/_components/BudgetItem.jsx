@@ -1,11 +1,18 @@
+import { max } from 'drizzle-orm';
 import Link from 'next/link'
 import React from 'react'
 
 function BudgetItem({ budget }) {
     const calculateProgress = () => {
-        const perc = (budget.totalSpend/budget.amount)*100
-        return perc.toFixed(2)
-    }
+        const perc = (budget.totalSpend / budget.amount) * 100;
+        return perc > 100 ? 101 : Number(perc.toFixed(2)); // Ensure it's a number
+    };
+    
+
+    const perc = calculateProgress()
+    const remaining = Math.max(0, Number(budget.amount) - Number(budget.totalSpend || 0));
+
+    console.log(perc)
     return (
         <Link href={'/dashboard/expenses/'+budget?.id} >
             <div className='p-5 border rounded-lg hover:shadow-md cursor-pointer h-[170px]'>
@@ -26,10 +33,10 @@ function BudgetItem({ budget }) {
                     <div className='mt-5 w-full flex flex-col items-center'>
                         <div className='w-[100%] flex items-center justify-between mb-3'>
                             <h2 className='text-xs text-slate-600'>${budget.totalSpend?budget.totalSpend:0} Spent</h2>
-                            <h2 className='text-xs text-indigo-900'>${budget.amount-budget.totalSpend} Remaining</h2>
+                            <h2 className='text-xs text-indigo-900'>${remaining} Remaining</h2>
                         </div>
                         <div className='w-full bg-slate-300 h-2 rounded-full'>
-                           <div className=' bg-indigo-900 h-2 rounded-full' style={{width:`${calculateProgress()}%`}}>
+                        <div className={`h-2 rounded-full ${perc > 100 ? "bg-red-700" : "bg-indigo-900"}`} style={{ width: `${perc}%` }}>
 
                            </div>
                         </div>

@@ -26,17 +26,17 @@ function PieChartRender({ month }) {
       .from(Budgets)
       .where(
         sql`"created_by" = ${user.id} AND
-        EXTRACT(MONTH FROM "created_at")::integer = ${monthNum}`
+        EXTRACT(MONTH FROM "created_at")::integer = ${month}`
       );
       
-      console.log("API result:", result)
+      //console.log("API result:", result)
       setBudgetList(result)
       
       const chartData = result.map((budget, id) => ({
         name: budget.name,
         value: Math.abs(Number(budget.amount))
       }))
-      console.log("Chart data:", Array.isArray(chartData), chartData);
+      //console.log("Chart data:", Array.isArray(chartData), chartData);
       setChartData1(chartData)
     } catch (error) {
       console.error("Error fetching budget data:", error)

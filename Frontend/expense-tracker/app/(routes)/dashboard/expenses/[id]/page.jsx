@@ -46,7 +46,7 @@ function ExpensesScreen({ params }) {
         .where(eq(Budgets.id, params.id))
         .returning();
 
-      console.log(result)
+      //console.log(result)
     }
 
     toast("Budget Deleted Successfully!");
@@ -65,8 +65,8 @@ function ExpensesScreen({ params }) {
       .where(eq(Budgets.createdBy, user?.id))
       .where(eq(Budgets.id, params.id))
       .groupBy(Budgets.id)
-    console.log(result)
-    console.log(user)
+    //console.log(result)
+    //console.log(user)
     setBudgetInfo(result[0])
     getExpensesList()
   }
@@ -76,7 +76,7 @@ function ExpensesScreen({ params }) {
       .where(eq(Expenses.budgetId, params.id))
       .orderBy(desc(Expenses.id))
     setExpensesList(result)
-    console.log(result)
+    //console.log(result)
   }
   return (
     <div className='p-10 '>

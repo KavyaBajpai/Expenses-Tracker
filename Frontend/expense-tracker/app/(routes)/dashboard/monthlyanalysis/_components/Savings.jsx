@@ -44,17 +44,17 @@ function Savings({ month}) {
           .where(sql`EXTRACT(MONTH FROM ${Budgets.createdAt})::integer = ${prevMonth}`)
 
           .groupBy(Budgets.id);
-          console.log(`Data for month ${prevMonth}:`, result); 
+          //console.log(`Data for month ${prevMonth}:`, result); 
         setBudgetList(result);
 
         // Calculate total budget
         const budgetTotal = result.reduce((sum, budget) => sum + Number(budget.amount), 0);
-        console.log(`Total Budget for ${prevMonth}:`, budgetTotal);
+        //console.log(`Total Budget for ${prevMonth}:`, budgetTotal);
         setTotalBudget(budgetTotal);
 
         // Calculate total spending
         const spendTotal = result.reduce((sum, budget) => sum + (budget.totalSpend || 0), 0);
-        console.log(`Total Spend for ${prevMonth}:`, spendTotal);
+        //console.log(`Total Spend for ${prevMonth}:`, spendTotal);
         setTotalSpend(spendTotal);
       } catch (error) {
         console.error("Error fetching budget data:", error);

@@ -27,8 +27,8 @@ function Page() {
                 .innerJoin(Budgets, eq(Expenses.budgetId, Budgets.id))
                 .where(eq(Budgets.createdBy, user.id)) // Ensure user is defined
                 .where(sql`EXTRACT(MONTH FROM ${Budgets.createdAt})::integer = ${currentMonth}`)
-            console.log("from current")
-            console.log(result)
+            //console.log("from current")
+            //console.log(result)
 
             setExpensesList(result);
         } catch (error) {

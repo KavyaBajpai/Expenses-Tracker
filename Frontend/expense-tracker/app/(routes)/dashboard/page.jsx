@@ -36,9 +36,9 @@ function Dashboard() {
       
     setBudgetList(result);
     expenseList()
-    console.log("hi from page.jsx of dashboard")
-    console.log("budgetlist is")
-    console.log(result)
+    //console.log("hi from page.jsx of dashboard")
+    //console.log("budgetlist is")
+    //console.log(result)
   }
 
   const expenseList = async () => {

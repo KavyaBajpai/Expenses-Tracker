@@ -21,7 +21,7 @@ import { Input } from '@/components/ui/input'
 import { db } from '@/utils/dbConfig'
 import { Budgets } from '@/utils/schema'
 function EditBudget({budgetInfo, refreshData}) {
-    console.log(budgetInfo);
+    //console.log(budgetInfo);
     const [openEmojiPicker, setOpenEmojiPicker] = useState(false)
     const [emojiIcon, setEmojiIcon] = useState('😀')
 

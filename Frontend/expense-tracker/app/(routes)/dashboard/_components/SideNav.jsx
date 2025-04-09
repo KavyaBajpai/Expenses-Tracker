@@ -8,7 +8,7 @@ import React from 'react'
 
 function SideNav({ isOpen, setIsOpen }) {
     const path = usePathname()
-    console.log(isOpen)
+    //console.log(isOpen)
     const handleToggle = () => {
         setIsOpen(!isOpen);
      }
@@ -33,12 +33,6 @@ function SideNav({ isOpen, setIsOpen }) {
         },
         {
             id: 4,
-            name: 'Upgrade',
-            icon: ShieldCheck,
-            path: '/dashboard/upgrade'
-        },
-        {
-            id: 5,
             name: 'Monthly Analysis',
             icon: Calendar,
             path: '/dashboard/monthlyanalysis'

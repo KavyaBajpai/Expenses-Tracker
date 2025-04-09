@@ -9,9 +9,10 @@ import {
 } from "@/components/ui/select"
 
 function Input({month, setMonth}) {
+  
   useEffect(()=>{
-      console.log("month:", month)
-    },[setMonth])
+      //console.log("month:", month)
+    },[setMonth, month])
   return (
 
     <Select value={month} onValueChange={setMonth}>

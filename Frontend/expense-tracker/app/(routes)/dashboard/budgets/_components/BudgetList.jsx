@@ -25,8 +25,8 @@ function BudgetList() {
     .where(sql`EXTRACT(MONTH FROM ${Budgets.createdAt})::integer = ${currentMonth}`)
     .groupBy(Budgets.id)
      setBudgetList(result);
-     console.log("hi")
-    console.log(result)
+     //console.log("hi")
+    //console.log(result)
   }
   return (
     <div>

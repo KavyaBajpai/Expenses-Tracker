@@ -6,7 +6,7 @@ import React from 'react'
 import { toast } from 'sonner'
 
 function ExpenseList({expensesList, refreshData}) {
-    console.log(expensesList)
+    //console.log(expensesList)
     const deleteExpense = async (expense) => {
         const result = await db.delete(Expenses)
         .where(eq(Expenses.id, expense.id))
