@@ -30,7 +30,7 @@ function SideNav({ isOpen, setIsOpen }) {
             name: 'Expenses',
             icon: ReceiptText,
             path: '/dashboard/expensespage'
-        },
+        }, 
         {
             id: 4,
             name: 'Monthly Analysis',

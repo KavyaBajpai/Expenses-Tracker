@@ -63,17 +63,17 @@ function Dashboard() {
       <p className='text-gray-500 mt-2'>Let's dive in!</p>
       <CardsInfo budgetList={budgetList} />
 
-      <div className='grid grid-cols-1 md:grid-cols-3 mt-6 gap-5'>
+      <div className=' grid grid-cols-1 md:grid-cols-3 mt-6 gap-5'>
         <div className='md:col-span-2'>
           <BarChartDashboard budgetList={budgetList} />
           <ExpenseListTable expensesList={expensesList} refreshData={()=>{getBudgetList()}} />
         </div>
         
-        <div className='grid gap-3'>
+        <div className='grid'>
           
            <h2 className='font-bold text-lg'> Latest Budgets</h2>
             {budgetList.slice(0,3).map((budget, index) => (
-              <BudgetItem budget={budget} key={index} />
+              <BudgetItem  budget={budget} key={index} />
             ))
           }
         </div>

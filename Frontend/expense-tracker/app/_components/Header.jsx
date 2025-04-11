@@ -6,7 +6,7 @@ import { useUser } from '@clerk/nextjs'
 import { UserButton } from '@clerk/nextjs'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation';
-function Header() {
+function Header() { 
   const { user, isSignedIn } = useUser();
   const router = useRouter();
   return (

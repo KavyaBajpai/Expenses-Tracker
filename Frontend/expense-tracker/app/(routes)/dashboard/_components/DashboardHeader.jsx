@@ -8,7 +8,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation';
 import { Sidebar } from 'lucide-react'
 import SideNav from './SideNav'
-function Header({setIsOpen  , isOpen}) {
+function Header({setIsOpen  , isOpen}) { 
   const { user, isSignedIn } = useUser();
   const router = useRouter();
   

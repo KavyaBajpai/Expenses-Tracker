@@ -15,7 +15,7 @@ function BudgetItem({ budget }) {
     console.log(perc)
     return (
         <Link href={'/dashboard/expenses/'+budget?.id} >
-            <div className='p-5 border rounded-lg hover:shadow-md cursor-pointer h-[170px]'>
+            <div className='p-5 border rounded-lg hover:shadow-md cursor-pointer  h-[170px]'>
             <div className=''>
                 <div className='flex flex-col gap-2 items-center justify-between'>
                    <div className='flex w-full justify-between items-center'>

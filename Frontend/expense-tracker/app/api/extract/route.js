@@ -44,7 +44,7 @@ export async function POST(req) {
       ],
     });
 
-    // ✅ Fix: Remove markdown syntax before parsing
+    
     let cleanData = response.text.replace(/^```json\n|\n```$/g, "");
     let extractedData = JSON.parse(cleanData);
 

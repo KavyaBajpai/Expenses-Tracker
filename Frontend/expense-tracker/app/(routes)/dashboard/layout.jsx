@@ -18,7 +18,7 @@ function DashboardLayout({ children }) {
   const checkUserBudgets = async () => {
     const result = await db.select()
       .from(Budgets)
-      .where(eq(Budgets.createdBy, user?.primaryEmailAddress?.emailAddress))
+      .where(eq(Budgets.createdBy, user?.primaryEmailAddress?.emailAddress)) 
 
     //console.log(result)
     // if(result?.length==0)
@@ -28,7 +28,7 @@ function DashboardLayout({ children }) {
   }
   return (
     <div className='flex'>
-      <SideNav isOpen={isOpen} setIsOpen={setIsOpen} />
+      {isOpen && <SideNav isOpen={isOpen} setIsOpen={setIsOpen} />}
       <div className={`flex-1 transition-all duration-500 ${isOpen ? "ml-64" : "ml-0"}`}>
         <DashboardHeader setIsOpen={setIsOpen} isOpen={isOpen} />
         {children}
