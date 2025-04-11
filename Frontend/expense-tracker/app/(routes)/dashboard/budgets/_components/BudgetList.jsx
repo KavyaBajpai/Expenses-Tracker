@@ -9,8 +9,10 @@ import BudgetItem from './BudgetItem'
 function BudgetList() {
   const currentMonth = new Date().getMonth() + 1;
   const [budgetList, setBudgetList] = useState([])
-  const {user} = useUser();
+  const { user } = useUser();
+const user_id = user?.id;
   useEffect(() => {
+    if(!user) return
     getBudgetList()
   },[user])
   const getBudgetList = async () => {

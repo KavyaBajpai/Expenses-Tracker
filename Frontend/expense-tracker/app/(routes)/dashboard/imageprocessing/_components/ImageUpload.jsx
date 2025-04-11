@@ -15,11 +15,14 @@ const ImageUploader = () => {
     const [editingExpense, setEditingExpense] = useState(null);
     const currentMonth = new Date().getMonth() + 1;
     const [budgetList, setBudgetList] = useState([])
-    const { user } = useUser()
-    const user_id = user.id
+    
+    const { user } = useUser();
+const user_id = user?.id; // ✅ Fix: Use optional chaining
+
     
     useEffect(() => {
         const fetchBudgetList = async () => {
+            if (!user) return;
             try {
                 const currentMonth = new Date().getMonth() + 1;  
                 console.log("from image upload")
