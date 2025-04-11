@@ -17,6 +17,7 @@ const ImageUploader = () => {
     const [budgetList, setBudgetList] = useState([])
     const { user } = useUser()
     const user_id = user.id
+    
     useEffect(() => {
         const fetchBudgetList = async () => {
             try {

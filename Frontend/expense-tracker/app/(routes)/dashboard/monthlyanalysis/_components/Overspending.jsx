@@ -12,7 +12,7 @@ import {
     CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowTrendingUp, ArrowTrendingDown, AlertCircle } from "lucide-react";
+
 
 function OverspendingAnalysis({ month }) {
     const { user } = useUser();
@@ -101,9 +101,9 @@ function OverspendingAnalysis({ month }) {
                                             <span className="text-lg font-medium mt-6">Total Budget: {data.totalBudget}</span>
                                             <span className="text-lg font-medium">Total Spend: {data.totalSpent}</span>
                                             <div className="mt-4 flex items-center gap-2">
-                                                {data.status === "High Overspending" && <AlertCircle className="text-red-500" />}
-                                                {data.status === "Mild Overspending" && <ArrowTrendingUp className="text-yellow-500" />}
-                                                {data.status === "On Budget" && <ArrowTrendingDown className="text-green-500" />}
+                                                {data.status === "High Overspending" }
+                                                {data.status === "Mild Overspending" }
+                                                {data.status === "On Budget" }
                                                 <p className="text-xl">{data.status}</p>
                                             </div>
                                         </CardContent>
