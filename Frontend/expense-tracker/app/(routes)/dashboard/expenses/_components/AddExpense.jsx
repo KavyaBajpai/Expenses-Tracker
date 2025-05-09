@@ -4,18 +4,19 @@ import { db } from '@/utils/dbConfig'
 import { Expenses, Budgets} from '@/utils/schema'
 import React, { useState } from 'react'
 import { toast } from 'sonner'
-
+import { useUser } from '@clerk/nextjs'
 function AddExpense({budgetId, user, refreshData}) {
     const [expenseName, setExpenseName] = useState()
     const [expenseAmount, setExpenseAmount] = useState()
-
+    const { user: currentUser } = useUser()
     const addNewExpense =  async () => {
         
         const result = await db.insert(Expenses).values({
             name: expenseName,
             amount: expenseAmount,
             budgetId: budgetId,
-            createdAt: new Date()
+            createdAt: new Date(),
+            createdBy: user.id
 
         }).returning({insertedId: Budgets.id})
         setExpenseName('')

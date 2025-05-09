@@ -34,7 +34,7 @@ function CreateBudget({refreshData}) {
             .values({
                 name: budgetName,
                 amount: budgetAmount,
-                emoji: emojiIcon,
+                icon: emojiIcon,
                 createdBy: user.id
 
             }).returning({ insertedId: Budgets.id })

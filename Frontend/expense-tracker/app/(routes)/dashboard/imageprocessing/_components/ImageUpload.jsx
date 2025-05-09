@@ -17,8 +17,7 @@ const ImageUploader = () => {
     const [budgetList, setBudgetList] = useState([])
     
     const { user } = useUser();
-const user_id = user?.id; // ✅ Fix: Use optional chaining
-
+    const user_id = user?.id; 
     
     useEffect(() => {
         const fetchBudgetList = async () => {
@@ -31,7 +30,7 @@ const user_id = user?.id; // ✅ Fix: Use optional chaining
                         id: Budgets.id,  
                         name: Budgets.name,  
                     }).from(Budgets)  
-                    .where(eq(Budgets.createdBy, user_id))  // ✅ Fix: Use `user.id`
+                    .where(eq(Budgets.createdBy, user_id))  
                     .where(sql`EXTRACT(MONTH FROM ${Budgets.createdAt})::integer = ${currentMonth}`)  
                     .groupBy(Budgets.id);  
                     console.log(budgets)
@@ -42,8 +41,7 @@ const user_id = user?.id; // ✅ Fix: Use optional chaining
         };
         fetchBudgetList();
     }, []);
-    //console.log(user)
-    // ✅ Create budget mapping only after budgetList is available
+    
     const budgetMapping = Object.fromEntries(budgetList.map(b => [b.name, b.id]));
     console.log(budgetList)
     console.log(budgetMapping)
@@ -87,7 +85,7 @@ const user_id = user?.id; // ✅ Fix: Use optional chaining
 
                 const rawData = await res.json();
 
-                // ✅ Ensure rawData.data is a string before applying replace
+                
                 const responseText = typeof rawData.data === "string" ? rawData.data : JSON.stringify(rawData.data);
                 let cleanData = responseText.replace(/^```json\n|\n```$/g, "");
 
@@ -107,7 +105,7 @@ const user_id = user?.id; // ✅ Fix: Use optional chaining
             const updated = [...prev];
 
             if (field === "category" && budgetMapping[value]) {
-                // ✅ If category (budget name) changes, update the corresponding budgetId
+                
                 updated[index].budgetId = budgetMapping[value];
             }
 
