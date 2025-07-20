@@ -24,6 +24,9 @@ function Input({month, setMonth}) {
         <SelectItem value="2">February'25</SelectItem>
         <SelectItem value="3">March'25</SelectItem>
         <SelectItem value="4">April'25</SelectItem>
+         <SelectItem value="4">May'25</SelectItem>
+          <SelectItem value="4">June'25</SelectItem>
+           <SelectItem value="4">July'25</SelectItem>
       </SelectContent>
     </Select>
 
