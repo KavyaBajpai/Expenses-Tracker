@@ -57,6 +57,7 @@ export async function POST(req) {
 
   } catch (error) {
     console.error("Error processing receipt:", error);
+    console.error("Error processing receipt:", error.message);
     return NextResponse.json({
       error: "Failed to process the receipt",
       details: error.message,
